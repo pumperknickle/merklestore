@@ -1,0 +1,19 @@
+version: "3"
+services:
+  merklestore:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: merklestore
+    environment:
+      SLEEP_LENGTH: 5
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+    links:
+      - redis
+  redis:
+    image: "redis:5"
+    expose:
+      - 6379
