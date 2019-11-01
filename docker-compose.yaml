@@ -1,12 +1,12 @@
 version: "3"
 services:
   merklestore:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: merklestore
     environment:
-      SLEEP_LENGTH: 5
+      - SLEEP_LENGTH=5
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     ports:
       - 8080:8080
     depends_on:

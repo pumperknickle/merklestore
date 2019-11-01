@@ -6,7 +6,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     // Register providers first
     try services.register(RedisProvider())
     var redisConfig = RedisClientConfig()
-    redisConfig.hostname = Environment.get("REDIS_HOST") ?? "redis"
+    redisConfig.hostname = Environment.get("REDIS_HOST") ?? "localhost"
     redisConfig.port = Int(Environment.get("REDIS_PORT") ?? "6379") ?? 6379
     let redis = try RedisDatabase(config: redisConfig)
     var databases = DatabasesConfig()
